@@ -113,7 +113,7 @@ const MoviesPage = () => {
             <div className="search-container">
                 <input
                     type="text"
-                    placeholder="Search for movies..."
+                    placeholder="Search for movies...🔍"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)} // Змінюємо state на кожну зміну
                 />
@@ -138,6 +138,7 @@ const MoviesPage = () => {
                                     )}
                                     <h3>{movie.title}</h3>
                                     <div className="movie-rating">{renderStars(movie.vote_average)}</div>
+                                    <a className={'vote'} href="#">IMDb: {movie.vote_average}</a>
                                 </div>
                             ))
                         )}

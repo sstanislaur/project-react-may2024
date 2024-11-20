@@ -3,9 +3,6 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: 'Anton', sans-serif;
-
-
-
 }
 
 :root {
@@ -170,7 +167,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  font-family: 'Anton', sans-serif;
 }
 
 .navbar-list {
@@ -228,6 +225,146 @@ a {
   border-color: #e50914; /* Червоний колір при фокусі */
 }
 
-input::placeholder {
-color: white;
+.header span {
+  background: #e50914;
+  border-radius: 25px;
+  padding: 10px;
+  margin-right:5px ;
+  color: white;
 }
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.about-page h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #fb0003;
+  text-shadow: 2px 2px 4px rgba(99, 99, 99, 0.6);
+}
+
+.about-page p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #dcdcdc;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.about-page p strong {
+  color: #fb0003;
+}
+
+.about-page a {
+  color: #fb0003;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.about-page a:hover {
+  color: #fb0003;
+  text-decoration: underline;
+}
+
+
+.footer {
+  color: #757575; /* Світло-сірий текст */
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+
+}
+
+.footer a {
+  color: #757575; /* Колір посилань */
+  text-decoration: none;
+  padding: 5px;
+
+}
+
+.footer a:hover {
+  text-decoration: underline; /* Підкреслення при наведенні */
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.footer-column {
+  flex: 1 1 200px; /* Ширина кожної колонки */
+  text-align: left;
+}
+
+.footer-column a {
+  display: block;
+  margin: 5px 0;
+}
+
+.footer-language-selector {
+  margin-top: 20px;
+}
+
+.footer-language-selector select {
+  padding: 5px;
+  border: 1px solid #757575;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.footer p {
+  margin-top: 20px;
+}
+
+.vote {
+  color: white;
+}
+
+.genre-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.genre-page h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.genres-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.genre-item {
+  background-color: #222;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.genre-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+

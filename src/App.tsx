@@ -7,6 +7,8 @@ import MovieDetailsPage from './pages/MovieDetailsPage';
 import './styles/styles.scss';
 import Header from './components/Header';
 import { ThemeProvider } from './context/ThemeContext';
+import GenrePage from "./components/GenrePage";
+import MovieByGenrePage from "./components/MovieByGenrePage";
 
 const App = () => {
     return (
@@ -18,8 +20,11 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<MoviesPage />} />
                         <Route path="/movies" element={<MoviesPage />} />
+                        <Route path="/genres" element={<GenrePage />} />
+                        <Route path="/movies/genre/:genreId" element={<MovieByGenrePage />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/movies/:id" element={<MovieDetailsPage />} />
+
                     </Routes>
                 </div>
             </Router>
