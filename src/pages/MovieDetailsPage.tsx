@@ -1,11 +1,11 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useFetch } from '../hooks/useFetch';
+import {useParams} from 'react-router-dom';
+import {useFetch} from '../hooks/useFetch';
 import {Movie} from "../types/movie";
 
 export const MovieDetailsPage: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    const { data: movie, loading } = useFetch<Movie>(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
+    const {id} = useParams<{ id: string }>();
+    const {data: movie, loading} = useFetch<Movie>(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
 
     if (loading) return <div>Loading...</div>;
     if (!movie) return <div>Movie not found</div>;
@@ -13,7 +13,7 @@ export const MovieDetailsPage: React.FC = () => {
     return (
         <div className="movie-details">
             <h1>{movie.title}</h1>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
             <p>Language: {movie.original_language}</p>
             <p>Description: {movie.overview}</p>
             <p>Release Date: {movie.release_date}</p>

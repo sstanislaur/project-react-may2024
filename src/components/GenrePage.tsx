@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-type Genre = {
-    id: number;
-    name: string;
-};
+import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {Genre} from "../types/movie";
 
 const GenrePage: React.FC = () => {
     const [genres, setGenres] = useState<Genre[]>([]);
@@ -35,7 +31,6 @@ const GenrePage: React.FC = () => {
     }, []);
 
     const handleGenreClick = (genreId: number) => {
-        // Переходимо до сторінки з фільтрацією фільмів за жанром
         navigate(`/movies/genre/${genreId}`);
     };
 

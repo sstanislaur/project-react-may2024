@@ -14,3 +14,7 @@ export interface Movie {
     genres: Genre[]
     poster_path: string;
 }
+
+export interface Props {
+    movie: Movie;
+}

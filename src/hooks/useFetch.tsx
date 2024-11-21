@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
-export const useFetch = <T,>(url: string): { data: T | null; loading: boolean; error: string | null } => {
+export const useFetch = <T, >(url: string): { data: T | null; loading: boolean; error: string | null } => {
     const [data, setData] = useState<T | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -26,6 +26,6 @@ export const useFetch = <T,>(url: string): { data: T | null; loading: boolean; e
         fetchData();
     }, [url]);
 
-    return { data, loading, error };
+    return {data, loading, error};
 };
 

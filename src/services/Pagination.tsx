@@ -1,13 +1,8 @@
 import React from 'react';
+import {Props} from "../types/pagination";
 
-interface Props {
-    currentPage: number;
-    totalPages: number;
-    onPageChange: (page: number) => void;
-}
-
-export const Pagination: React.FC<Props> = ({ currentPage, totalPages, onPageChange }) => {
-    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+export const Pagination: React.FC<Props> = ({currentPage, totalPages, onPageChange}) => {
+    const pages = Array.from({length: totalPages}, (_, i) => i + 1);
 
     return (
         <div className="pagination">
@@ -20,3 +15,4 @@ export const Pagination: React.FC<Props> = ({ currentPage, totalPages, onPageCha
     );
 };
 
+export default Pagination

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState, useEffect, useCallback} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const MoviesPage = () => {
     const [movies, setMovies] = useState<any[]>([]);
@@ -7,8 +7,8 @@ const MoviesPage = () => {
     const [totalPages, setTotalPages] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(false);
     const [searchQuery, setSearchQuery] = useState<string>('');
-    const [isSearch, setIsSearch] = useState<boolean>(false); // Флаг для перевірки пошуку
-    const navigate = useNavigate(); // Використовуємо navigate для переходу
+    const [isSearch, setIsSearch] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const debounce = (func: Function, delay: number) => {
         let timeout: NodeJS.Timeout;
@@ -20,7 +20,7 @@ const MoviesPage = () => {
 
     const fetchMovies = useCallback(async (page: number, query: string = '') => {
         setLoading(true);
-        const apiKey = 'cdc6f85037cb25eaeb738d4d76c6c395'; // Вставте свій API ключ
+        const apiKey = 'cdc6f85037cb25eaeb738d4d76c6c395';
         let fetchUrl = '';
 
         if (query) {
@@ -104,7 +104,6 @@ const MoviesPage = () => {
     };
 
     const handleMovieClick = (movieId: number) => {
-        // Перехід на сторінку детального опису фільму
         navigate(`/movies/${movieId}`);
     };
 

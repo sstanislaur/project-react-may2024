@@ -5,6 +5,7 @@ body {
   font-family: 'Anton', sans-serif;
 }
 
+/////theme-switcher/////
 :root {
   --background-color: #ffffff;
   --text-color: #000000;
@@ -21,14 +22,23 @@ body {
 }
 
 .theme-switcher {
-  background: none;
-  border: 1px solid var(--text-color);
-  color: var(--text-color);
-  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 8px 16px;
   cursor: pointer;
   border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
+.theme-switcher:hover {
+  background-color: #555;
+}
+
+/////theme-switcher/////
+
+
+/////movies-card/////
 .movies-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -71,6 +81,9 @@ body {
   overflow: hidden;
 }
 
+/////movies-card/////
+
+/////pagination/////
 .pagination {
   display: flex;
   justify-content: center;
@@ -103,6 +116,10 @@ body {
   font-size: 18px;
 }
 
+/////pagination/////
+
+
+/////header/////
 .header {
   display: flex;
   justify-content: space-between;
@@ -112,20 +129,18 @@ body {
   color: white;
 }
 
-.theme-switcher {
-  background-color: #333;
+.header span {
+  background: #e50914;
+  border-radius: 25px;
+  padding: 10px;
+  margin-right: 5px;
   color: white;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
 }
 
-.theme-switcher:hover {
-  background-color: #555;
-}
+/////header/////
 
+
+/////poster-preview/////
 .poster-preview {
   width: 100%;
   height: auto;
@@ -138,6 +153,10 @@ body {
   transform: scale(1.05);
 }
 
+/////poster-preview/////
+
+
+/////stars-rating/////
 .stars-rating {
   display: flex;
   font-size: 18px;
@@ -145,6 +164,19 @@ body {
   margin: 5px 0;
 }
 
+.star {
+  font-size: 20px;
+  color: #ffd700;
+}
+
+.star.empty {
+  color: #555;
+}
+
+/////stars-rating/////
+
+
+/////genre-badge/////
 .genre-badge {
   display: inline-block;
   padding: 6px 12px;
@@ -158,6 +190,10 @@ body {
   text-align: center;
 }
 
+/////genre-badge/////
+
+
+/////navbar/////
 .navbar {
   background-color: #141414;
   padding: 10px 20px;
@@ -195,19 +231,15 @@ body {
   background-color: #333;
 }
 
-.star {
-  font-size: 20px;
-  color: #ffd700;
-}
+/////navbar/////
 
-.star.empty {
-  color: #555;
-}
 
 a {
   text-decoration: none;
 }
 
+
+/////search-cont/////
 .search-container input {
   padding: 10px 15px;
   margin-top: 20px;
@@ -225,14 +257,10 @@ a {
   border-color: #e50914; /* Червоний колір при фокусі */
 }
 
-.header span {
-  background: #e50914;
-  border-radius: 25px;
-  padding: 10px;
-  margin-right:5px ;
-  color: white;
-}
+/////search-cont/////
 
+
+/////about-page/////
 .about-page {
   display: flex;
   flex-direction: column;
@@ -275,7 +303,10 @@ a {
   text-decoration: underline;
 }
 
+/////about-page/////
 
+
+/////footer/////
 .footer {
   color: #757575; /* Світло-сірий текст */
   padding: 20px;
@@ -325,14 +356,20 @@ a {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .footer p {
   margin-top: 20px;
 }
+
+/////footer/////
+
 
 .vote {
   color: white;
 }
 
+
+/////genre-page/////
 .genre-page {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -368,3 +405,4 @@ a {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+/////genre-page/////

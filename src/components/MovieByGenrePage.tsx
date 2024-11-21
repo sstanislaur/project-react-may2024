@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useParams, useNavigate} from "react-router-dom";
 import {Movie} from "../types/movie";
 
 const MovieByGenrePage: React.FC = () => {
-    const { genreId } = useParams<{ genreId: string }>();
+    const {genreId} = useParams<{ genreId: string }>();
     const [movies, setMovies] = useState<Movie[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const navigate = useNavigate();
@@ -32,7 +32,6 @@ const MovieByGenrePage: React.FC = () => {
     }, [genreId]);
 
     const handleMovieClick = (movieId: number) => {
-        // Перехід на сторінку детального опису фільму
         navigate(`/movies/${movieId}`);
     };
 
