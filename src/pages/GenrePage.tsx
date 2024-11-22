@@ -9,7 +9,7 @@ const GenrePage: React.FC = () => {
 
     useEffect(() => {
         const fetchGenres = async () => {
-            const apiKey = "cdc6f85037cb25eaeb738d4d76c6c395"; // Ваш API-ключ
+            const apiKey = "cdc6f85037cb25eaeb738d4d76c6c395";
             const url = `https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=${apiKey}`;
 
             try {

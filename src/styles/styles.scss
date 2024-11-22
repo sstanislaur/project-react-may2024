@@ -41,7 +41,7 @@ body {
 /////movies-card/////
 .movies-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 24px;
   padding: 20px;
 }
@@ -254,7 +254,7 @@ a {
 }
 
 .search-container input:focus {
-  border-color: #e50914; /* Червоний колір при фокусі */
+  border-color: #e50914;
 }
 
 /////search-cont/////
@@ -406,3 +406,31 @@ a {
 }
 
 /////genre-page/////
+
+.movie-details {
+  margin: 20px;
+}
+
+.movie-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.movie-poster img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  margin: 20px 0;
+  border: white 3px solid;
+}
+
+.movie-info {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.genre-badges {
+  margin-top: 20px;
+}
+

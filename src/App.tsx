@@ -6,8 +6,8 @@ import AboutPage from './pages/AboutPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import Header from './components/Header';
 import {ThemeProvider} from './context/ThemeContext';
-import GenrePage from "./components/GenrePage";
-import MovieByGenrePage from "./components/MovieByGenrePage";
+import GenrePage from "./pages/GenrePage";
+import MovieByGenrePage from "./pages/MovieByGenrePage";
 import './styles/styles.scss';
 
 const App = () => {
