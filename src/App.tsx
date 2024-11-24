@@ -8,6 +8,8 @@ import Header from './components/Header';
 import {ThemeProvider} from './context/ThemeContext';
 import GenrePage from "./pages/GenrePage";
 import MovieByGenrePage from "./pages/MovieByGenrePage";
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import './styles/styles.scss';
 
 const App = () => {
@@ -24,7 +26,8 @@ const App = () => {
                         <Route path="/movies/genre/:genreId" element={<MovieByGenrePage/>}/>
                         <Route path="/about" element={<AboutPage/>}/>
                         <Route path="/movies/:id" element={<MovieDetailsPage/>}/>
-
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/register" element={<RegisterPage />} />
                     </Routes>
                 </div>
             </Router>

@@ -51,6 +51,10 @@ const MovieByGenrePage: React.FC = () => {
         return stars;
     };
 
+    const getYear = (date: string) => {
+        return date ? date.split('-')[0] : "N/A";
+    };
+
     return (
         <div className="movie-by-genre-page">
             {loading ? (
@@ -71,7 +75,7 @@ const MovieByGenrePage: React.FC = () => {
                             )}
                             <h3>{movie.title}</h3>
                             <div className="movie-rating">{renderStars(movie.vote_average)}</div>
-                            <p>IMDb: {movie.vote_average}</p>
+                            <p>{getYear(movie.release_date)}</p>
                         </div>
                     ))}
                 </div>

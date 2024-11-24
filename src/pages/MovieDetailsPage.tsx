@@ -52,7 +52,7 @@ export const MovieDetailsPage: React.FC = () => {
                     <span
                         key={genre.id}
                         className="genre-badge"
-                        style={{ backgroundColor: genreColors[genre.name] || "#ccc" }} // Використовуємо колір для жанра
+                        style={{ backgroundColor: genreColors[genre.name] || "#ccc" }}
                     >
                         {genre.name}
                     </span>

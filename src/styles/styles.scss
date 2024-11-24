@@ -25,10 +25,11 @@ body {
   background-color: #333;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 8px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 25px;
   transition: background-color 0.3s;
+  margin-top: -10px;
 }
 
 .theme-switcher:hover {
@@ -124,7 +125,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
   background-color: #141414;
   color: white;
 }
@@ -135,6 +135,11 @@ body {
   padding: 10px;
   margin-right: 5px;
   color: white;
+}
+
+.header:hover {
+  transition: transform 0.3s;
+  transform: scale(1.01);
 }
 
 /////header/////
@@ -196,7 +201,6 @@ body {
 /////navbar/////
 .navbar {
   background-color: #141414;
-  padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -373,7 +377,6 @@ a {
 .genre-page {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #f9f9f9;
   color: #333;
 }
 
@@ -432,5 +435,137 @@ a {
 
 .genre-badges {
   margin-top: 20px;
+}
+
+/////genre-page/////
+
+
+.suggestions {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1000;
+  width: 100%;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f0f0f0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Елементи розташовані зліва та справа */
+  align-items: center;
+  color: #fff;
+}
+
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn{
+  width: 100%;
+  padding: 10px;
+  background-color: #555555;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #fb0003;
+}
+
+.auth-form input {
+ margin-left: -5px;
+}
+
+.genre-page {
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.genres-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.genre-item {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.genre-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+}
+
+.genre-item h3 {
+  margin: 0;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+}
+
+.fool {
+  color: #555555;
 }
 

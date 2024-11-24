@@ -1,57 +1,60 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MoviesPage = () => {
     const [movies, setMovies] = useState<any[]>([]);
+    const [genres, setGenres] = useState<any[]>([]); // Для жанрів
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [totalPages, setTotalPages] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(false);
     const [searchQuery, setSearchQuery] = useState<string>('');
-    const [isSearch, setIsSearch] = useState<boolean>(false);
+    const [suggestions, setSuggestions] = useState<any[]>([]); // Для підказок
+    const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
     const navigate = useNavigate();
 
-    const debounce = (func: Function, delay: number) => {
-        let timeout: NodeJS.Timeout;
-        return (...args: any) => {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func(...args), delay);
-        };
+    const apiKey = 'cdc6f85037cb25eaeb738d4d76c6c395';
+
+    // Завантаження списку жанрів
+    const fetchGenres = async () => {
+        const url = `https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=${apiKey}`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Failed to fetch genres');
+            }
+            const data = await response.json();
+            setGenres(data.genres || []);
+        } catch (error) {
+            console.error('Error fetching genres:', error);
+        }
     };
+
+    useEffect(() => {
+        fetchGenres();  // Викликаємо при завантаженні сторінки
+    }, []);
 
     const fetchMovies = useCallback(async (page: number, query: string = '') => {
         setLoading(true);
-        const apiKey = 'cdc6f85037cb25eaeb738d4d76c6c395';
-        let fetchUrl = '';
-
-        if (query) {
-            fetchUrl = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=${page}&query=${encodeURIComponent(query)}&api_key=${apiKey}`;
-        } else {
-            fetchUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}&api_key=${apiKey}`;
-        }
-
-        console.log('Fetching URL:', fetchUrl);
+        const fetchUrl = query
+            ? `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=${page}&query=${encodeURIComponent(query)}&api_key=${apiKey}`
+            : `https://api.themoviedb.org/3/discover/movie?include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}&api_key=${apiKey}`;
 
         try {
             const response = await fetch(fetchUrl);
-
             if (!response.ok) {
                 throw new Error('Failed to fetch movies');
             }
 
             const data = await response.json();
-            console.log('Fetched Data:', data);
-
             if (data && Array.isArray(data.results)) {
                 setMovies(data.results);
             } else {
-                console.error('Invalid data format:', data);
                 setMovies([]);
             }
 
             if (data && typeof data.total_pages === 'number') {
                 setTotalPages(data.total_pages);
             } else {
-                console.error('Invalid total_pages format:', data);
                 setTotalPages(0);
             }
         } catch (error) {
@@ -63,17 +66,49 @@ const MoviesPage = () => {
         }
     }, []);
 
-    const debouncedFetchMovies = useCallback(debounce(fetchMovies, 500), [fetchMovies]);
-
-    useEffect(() => {
-        if (searchQuery) {
-            setIsSearch(true);
-            debouncedFetchMovies(currentPage, searchQuery);
-        } else {
-            setIsSearch(false);
-            fetchMovies(currentPage);
+    const fetchSuggestions = async (query: string) => {
+        if (query.trim() === '') {
+            setSuggestions([]);
+            return;
         }
-    }, [searchQuery, currentPage, debouncedFetchMovies, fetchMovies]);
+
+        const fetchUrl = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=${encodeURIComponent(query)}&api_key=${apiKey}`;
+        try {
+            const response = await fetch(fetchUrl);
+            if (!response.ok) {
+                throw new Error('Failed to fetch suggestions');
+            }
+
+            const data = await response.json();
+            if (data && Array.isArray(data.results)) {
+                setSuggestions(data.results.slice(0, 5));
+            } else {
+                setSuggestions([]);
+            }
+        } catch (error) {
+            console.error('Error fetching suggestions:', error);
+            setSuggestions([]);
+        }
+    };
+
+    const handleSuggestionClick = (suggestion: string) => {
+        setSearchQuery(suggestion);
+        setShowSuggestions(false);
+        setCurrentPage(1);
+        fetchMovies(1, suggestion);
+    };
+
+    const handleSearchChange = (query: string) => {
+        setSearchQuery(query);
+        setShowSuggestions(true);
+        fetchSuggestions(query);
+
+        if (query.trim() === '') {
+            fetchMovies(1);
+        } else {
+            fetchMovies(1, query);
+        }
+    };
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
@@ -103,8 +138,20 @@ const MoviesPage = () => {
         return stars;
     };
 
-    const handleMovieClick = (movieId: number) => {
-        navigate(`/movies/${movieId}`);
+    useEffect(() => {
+        fetchMovies(currentPage, searchQuery);
+    }, [currentPage, searchQuery]);
+
+    const getYear = (date: string) => {
+        return date ? date.split('-')[0] : "N/A";
+    };
+
+    // Функція для отримання назв жанрів по їх ID
+    const renderGenres = (genreIds: number[]) => {
+        return genreIds
+            .map(id => genres.find(genre => genre.id === id)?.name)
+            .filter(Boolean) // Remove undefined values
+            .join(", ");
     };
 
     return (
@@ -114,8 +161,23 @@ const MoviesPage = () => {
                     type="text"
                     placeholder="Search for movies...🔍"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)} // Змінюємо state на кожну зміну
+                    onChange={(e) => handleSearchChange(e.target.value)}
+                    onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                 />
+
+                {showSuggestions && suggestions.length > 0 && (
+                    <div className="suggestions">
+                        {suggestions.map((suggestion) => (
+                            <div
+                                key={suggestion.id}
+                                className="suggestion-item"
+                                onClick={() => handleSuggestionClick(suggestion.title)}
+                            >
+                                {suggestion.title}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
 
             {loading ? (
@@ -127,7 +189,8 @@ const MoviesPage = () => {
                             <p>No movies found</p>
                         ) : (
                             movies.map((movie) => (
-                                <div key={movie.id} className="movie-card" onClick={() => handleMovieClick(movie.id)}>
+                                <div key={movie.id} className="movie-card"
+                                     onClick={() => navigate(`/movies/${movie.id}`)}>
                                     {movie.poster_path && (
                                         <img
                                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -137,16 +200,20 @@ const MoviesPage = () => {
                                     )}
                                     <h3>{movie.title}</h3>
                                     <div className="movie-rating">{renderStars(movie.vote_average)}</div>
-                                    <a className={'vote'} href="#">IMDb: {movie.vote_average}</a>
+                                    <p className={"fool"}>{getYear(movie.release_date)}, {renderGenres(movie.genre_ids)}</p>
                                 </div>
                             ))
                         )}
                     </div>
 
                     <div className="pagination">
-                        <button onClick={handlePrevPage} disabled={currentPage === 1}>Previous</button>
+                        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                            Previous
+                        </button>
                         <span>Page {currentPage} of {totalPages}</span>
-                        <button onClick={handleNextPage} disabled={currentPage === totalPages}>Next</button>
+                        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+                            Next
+                        </button>
                     </div>
                 </>
             )}
