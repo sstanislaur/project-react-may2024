@@ -59,7 +59,6 @@ const GenrePage: React.FC = () => {
 
     return (
         <div className="genre-page">
-            <h1>Genres</h1>
             {loading ? (
                 <p>Loading...</p>
             ) : genres.length > 0 ? (
