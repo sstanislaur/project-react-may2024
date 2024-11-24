@@ -4,7 +4,6 @@ import NavBar from './components/NavBar';
 import MoviesPage from './pages/MoviesPage';
 import AboutPage from './pages/AboutPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
-import Header from './components/Header';
 import {ThemeProvider} from './context/ThemeContext';
 import GenrePage from "./pages/GenrePage";
 import MovieByGenrePage from "./pages/MovieByGenrePage";
@@ -16,7 +15,7 @@ const App = () => {
     return (
         <ThemeProvider>
             <Router>
-                <Header/>
+
                 <NavBar/>
                 <div className="content">
                     <Routes>

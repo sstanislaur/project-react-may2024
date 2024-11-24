@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState, useEffect, useCallback} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const MoviesPage = () => {
     const [movies, setMovies] = useState<any[]>([]);
@@ -14,7 +14,6 @@ const MoviesPage = () => {
 
     const apiKey = 'cdc6f85037cb25eaeb738d4d76c6c395';
 
-    // Завантаження списку жанрів
     const fetchGenres = async () => {
         const url = `https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=${apiKey}`;
         try {
@@ -30,7 +29,7 @@ const MoviesPage = () => {
     };
 
     useEffect(() => {
-        fetchGenres();  // Викликаємо при завантаженні сторінки
+        fetchGenres();
     }, []);
 
     const fetchMovies = useCallback(async (page: number, query: string = '') => {
@@ -146,11 +145,11 @@ const MoviesPage = () => {
         return date ? date.split('-')[0] : "N/A";
     };
 
-    // Функція для отримання назв жанрів по їх ID
+
     const renderGenres = (genreIds: number[]) => {
         return genreIds
             .map(id => genres.find(genre => genre.id === id)?.name)
-            .filter(Boolean) // Remove undefined values
+            .filter(Boolean)
             .join(", ");
     };
 

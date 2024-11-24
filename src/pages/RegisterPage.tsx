@@ -8,7 +8,6 @@ const RegisterPage = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Registration Submitted:', { name, email, password });
-        // Тут можна додати логіку реєстрації
     };
 
     return (

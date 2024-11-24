@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -6,8 +6,7 @@ const LoginPage = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Login Submitted:', { email, password });
-        // Тут можна додати логіку авторизації
+        console.log('Login Submitted:', {email, password});
     };
 
     return (

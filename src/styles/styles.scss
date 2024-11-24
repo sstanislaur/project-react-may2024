@@ -16,10 +16,6 @@ body {
   --text-color: #ffffff;
 }
 
-.header h1 {
-  color: #fb0003;
-
-}
 
 .theme-switcher {
   background-color: #333;
@@ -121,6 +117,11 @@ body {
 
 
 /////header/////
+
+.header h1 {
+  color: #fb0003;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -143,7 +144,10 @@ body {
 }
 
 /////header/////
-
+.genre-badge:hover {
+  transition: transform 0.3s;
+  transform: scale(1.03);
+}
 
 /////poster-preview/////
 .poster-preview {
@@ -237,7 +241,6 @@ body {
 
 /////navbar/////
 
-
 a {
   text-decoration: none;
 }
@@ -312,7 +315,7 @@ a {
 
 /////footer/////
 .footer {
-  color: #757575; /* Світло-сірий текст */
+  color: #757575;
   padding: 20px;
   text-align: center;
   font-size: 0.9rem;
@@ -320,14 +323,14 @@ a {
 }
 
 .footer a {
-  color: #757575; /* Колір посилань */
+  color: #757575;
   text-decoration: none;
   padding: 5px;
 
 }
 
 .footer a:hover {
-  text-decoration: underline; /* Підкреслення при наведенні */
+  text-decoration: underline;
 }
 
 .footer-columns {
@@ -339,7 +342,7 @@ a {
 }
 
 .footer-column {
-  flex: 1 1 200px; /* Ширина кожної колонки */
+  flex: 1 1 200px;
   text-align: left;
 }
 
@@ -440,6 +443,7 @@ a {
 /////genre-page/////
 
 
+/////suggestions/////
 .suggestions {
   position: absolute;
   background: white;
@@ -459,13 +463,16 @@ a {
   background: #f0f0f0;
 }
 
+/////suggestions/////
+
 .navbar {
   display: flex;
-  justify-content: space-between; /* Елементи розташовані зліва та справа */
+  justify-content: space-between;
   align-items: center;
   color: #fff;
 }
 
+/////auth/////
 .auth-page {
   display: flex;
   flex-direction: column;
@@ -501,7 +508,7 @@ a {
   border-radius: 4px;
 }
 
-.btn{
+.btn {
   width: 100%;
   padding: 10px;
   background-color: #555555;
@@ -512,14 +519,20 @@ a {
   font-size: 16px;
 }
 
+
 button:hover {
   background-color: #fb0003;
 }
 
+
 .auth-form input {
- margin-left: -5px;
+  margin-left: -5px;
 }
 
+/////auth/////
+
+
+/////genre/////
 .genre-page {
   text-align: center;
   color: #fff;
@@ -565,7 +578,11 @@ button:hover {
   border-radius: 4px;
 }
 
+/////genre/////
+
 .fool {
   color: #555555;
 }
+
+
 

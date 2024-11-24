@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Genre } from "../types/movie";
+import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {Genre} from "../types/movie";
 
 const GenrePage: React.FC = () => {
     const [genres, setGenres] = useState<Genre[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const navigate = useNavigate();
 
-    // Масив жанрів із бекграунд-зображеннями
+
     const genreImages: { [key: string]: string } = {
         Action: "/images/action.jpg",
         Adventure: "/images/adventure.jpg",

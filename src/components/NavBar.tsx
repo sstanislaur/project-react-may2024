@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const NavBar = () => {
@@ -27,7 +27,7 @@ const NavBar = () => {
             </ul>
             <ul className="navbar-list navbar-right">
                 <li className="navbar-item">
-                <Link to="/login" className="navbar-link"><strong>Login</strong></Link>
+                    <Link to="/login" className="navbar-link"><strong>Login</strong></Link>
                 </li>
                 <li className="navbar-item">
                     <Link to="/register" className="navbar-link"><strong><span
