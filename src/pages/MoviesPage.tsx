@@ -3,12 +3,12 @@ import {useNavigate} from 'react-router-dom';
 
 const MoviesPage = () => {
     const [movies, setMovies] = useState<any[]>([]);
-    const [genres, setGenres] = useState<any[]>([]); // Для жанрів
+    const [genres, setGenres] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [totalPages, setTotalPages] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(false);
     const [searchQuery, setSearchQuery] = useState<string>('');
-    const [suggestions, setSuggestions] = useState<any[]>([]); // Для підказок
+    const [suggestions, setSuggestions] = useState<any[]>([]);
     const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
     const navigate = useNavigate();
 
